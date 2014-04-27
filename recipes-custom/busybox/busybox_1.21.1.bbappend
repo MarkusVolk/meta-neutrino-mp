@@ -8,7 +8,10 @@ SRC_URI += " \
 	file://hostname.script \
 "
 
-PACKAGES_prepend += "${PN}-inetd ${PN}-telnetd"
+PACKAGES_prepend += " \
+	${PN}-inetd \
+	${PN}-telnetd \
+"
 FILES_${PN}-inetd = " \
 	/etc/init.d/inetd.busybox \
 	/etc/inetd.conf \
