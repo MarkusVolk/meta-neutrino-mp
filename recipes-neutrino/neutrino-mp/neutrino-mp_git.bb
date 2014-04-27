@@ -1,6 +1,7 @@
 SUMMARY = "Port of neutrino to multiple platforms, including (but not limited to) the Tripledragon, AZbox ME/miniME and Fulan Spark/Spark7162 settop boxes and the Raspberry Pi."
 DESCRIPTION = "Port of neutrino to multiple platforms."
 HOMEPAGE = "https://gitorious.org/neutrino-mp/neutrino-mp"
+MAINTAINER = "Johnny Walker"
 SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING.GPL;md5=751419260aa954499f7abaabaa882bbe \
