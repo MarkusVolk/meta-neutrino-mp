@@ -42,8 +42,9 @@ RDEPENDS_${PN}_append_tripledragon += "kernel-module-td-dvb-frontend"
 RCONFLICTS_${PN} = "neutrino-hd2"
 
 SRCREV = "${AUTOREV}"
+#SRCREV = "f6d8c023135241c4002865af950414b0519a004f"
 PV = "0.0+git${SRCPV}"
-PR = "r23"
+PR = "r2"
 
 SRC_URI = " \
 	git://gitorious.org/neutrino-mp/neutrino-mp.git;protocol=git \
@@ -51,6 +52,7 @@ SRC_URI = " \
 	file://timezone.xml \
 	file://custom-poweroff.init \
 	file://COPYING.GPL \
+	file://0001-fix-screenshot-with-yocto-build.patch \
 "
 
 S = "${WORKDIR}/git"

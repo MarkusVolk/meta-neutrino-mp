@@ -16,8 +16,8 @@ COMPATIBLE_MACHINE_coolstream = "none"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 DEPENDS = "\
-	openthreads \
-	ffmpeg \
+openthreads \
+ffmpeg \
 "
 
 # on coolstream, the same is provided by cs-drivers pkg (libcoolstream)
@@ -31,7 +31,7 @@ RDEPENDS_${PN} = "ffmpeg"
 
 SRCREV = "${AUTOREV}"
 PV = "0.0+git${SRCPV}"
-PR = "r9"
+PR = "r1"
 
 # prepend, or it will end up in -bin package...
 PACKAGES_prepend_spark = "spark-fp "
@@ -39,9 +39,9 @@ PACKAGES_prepend_spark = "spark-fp "
 PACKAGES += "${PN}-bin"
 
 SRC_URI = " \
-	git://gitorious.org/neutrino-hd/libstb-hal.git;protocol=git \
-	file://blank_480.mpg \
-	file://blank_576.mpg \
+git://gitorious.org/neutrino-hd/libstb-hal.git;protocol=git \
+file://blank_480.mpg \
+file://blank_576.mpg \
 "
 
 S = "${WORKDIR}/git"
@@ -56,9 +56,9 @@ CPPFLAGS_tripledragon += "-I${STAGING_DIR_HOST}/usr/include/hardware"
 LDFLAGS = " -Wl,-rpath-link,${STAGING_DIR_HOST}/usr/lib -L${STAGING_DIR_HOST}/usr/lib"
 
 EXTRA_OECONF += "\
-	--enable-maintainer-mode \
-	--disable-silent-rules \
-	--enable-shared \
+--enable-maintainer-mode \
+--disable-silent-rules \
+--enable-shared \
 "
 
 EXTRA_OECONF_append_spark += "--with-boxtype=spark"
@@ -66,20 +66,20 @@ EXTRA_OECONF_append_raspberrypi += "--with-boxtype=generic --with-boxmodel=raspi
 EXTRA_OECONF_append_tripledragon += "--with-boxtype=tripledragon"
 
 do_install_append() {
-	install -d ${D}/${datadir}
+install -d ${D}/${datadir}
 }
 
 do_install_append_tripledragon() {
-	install -D -m 0644 ${WORKDIR}/blank_576.mpg ${D}/${datadir}/tuxbox/blank_576.mpg
-	install -D -m 0644 ${WORKDIR}/blank_480.mpg ${D}/${datadir}/tuxbox/blank_480.mpg
+install -D -m 0644 ${WORKDIR}/blank_576.mpg ${D}/${datadir}/tuxbox/blank_576.mpg
+install -D -m 0644 ${WORKDIR}/blank_480.mpg ${D}/${datadir}/tuxbox/blank_480.mpg
 }
 
 # pic2m2v is included in lib package, because it is always needed,
 # libstb-hal-bin contains all other binaries, which are rather for testing only
 FILES_${PN} = "\
-	${libdir}/* \
-	${bindir}/pic2m2v \
-	${datadir} \
+${libdir}/* \
+${bindir}/pic2m2v \
+${datadir} \
 "
 
 FILES_${PN}-dev += "${includedir}/libstb-hal/*"

@@ -18,7 +18,11 @@ IMAGE_INSTALL += " \
 	e2fsprogs-tune2fs \
 	djmount \
 	autofs \
+	fbshot \
+	cifs-utils \
 "
+
+IMAGE_FEATURES +="debug-tweaks"
 
 # Tripledragon Kernel is too old for udev
 IMAGE_INSTALL += "${@'udev-extraconf' if MACHINE != 'tripledragon' else ''}"
@@ -28,3 +32,5 @@ IMAGE_INSTALL += "${@'udev-extraconf' if MACHINE != 'tripledragon' else ''}"
 IMAGE_INSTALL += "${@'kernel-modules' if MACHINE != 'coolstream' else ''}"
 
 EXTRAOPKGCONFIG = "neutrino-feed-config"
+
+
